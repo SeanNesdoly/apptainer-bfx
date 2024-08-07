@@ -18,15 +18,14 @@
 # University of Calgary
 # Created: 2024-08-05
 
-# dnf?
+# Rocky Linux
 Bootstrap: yum
-OSVersion: 40
-MirrorURL: http://dfw.mirror.rackspace.com/fedora/releases/%{OSVERSION}/Everything/x86_64/os/
-Include: fedora-release-container dnf
-Setopt: install_weak_deps=False
-# From: debian:bullseye-slim
+OSVersion: 9
+MirrorURL: http://dl.rockylinux.org/pub/rocky/%{OSVERSION}/BaseOS/x86_64/os/
+Include: dnf
 
 %environment
+    LC_ALL=C
 #    export PATH=$PATH:/usr/games/
 
 %labels
@@ -61,9 +60,9 @@ Setopt: install_weak_deps=False
 %runscript
     #!/bin/bash
 
-    #dnf -y update
+    dnf -y update
     #dnf upgrade
-    dnf install -y cowsay # curl epel-release git-core vim-minimal
+    dnf install -y cowsay epel-release # curl git-core vim-minimal
     date | cowsay
 
     #echo "Container creation time: $(date -Is | tr -d : | cut -c 1-17)"
