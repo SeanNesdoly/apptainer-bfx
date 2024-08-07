@@ -1,0 +1,72 @@
+# Apptainer image definition file for bioinformatics (bfx) software
+#
+# To build container `bfx.sif` based on definition file `bfx.def`:
+#   $ apptainer build bfx.sif bfx.def
+#   $ apptainer inspect bfx.sif
+#
+# To execute or run commands within the container:
+#   $ apptainer exec bfx.sif <bash commands>
+#   $ apptainer run bfx.sif
+# 
+# @TODO:
+#   Sign built *.sif image
+#
+# Sean Nesdoly
+# morrissylab.ucalgary.ca
+# Charbonneau Cancer Institute
+# Cumming School of Medicine
+# University of Calgary
+# Created: 2024-08-05
+
+# dnf?
+Bootstrap: yum
+OSVersion: 40
+MirrorURL: http://dfw.mirror.rackspace.com/fedora/releases/%{OSVERSION}/Everything/x86_64/os/
+Include: fedora-release-container dnf
+Setopt: install_weak_deps=False
+# From: debian:bullseye-slim
+
+%environment
+#    export PATH=$PATH:/usr/games/
+
+%labels
+    AUTHOR sean.nesdoly@ucalgary.ca
+    VERSION 0.0.0
+
+%post -c /bin/bash
+    # apt-get update && apt-get install -y locales-all curl cowsay
+    # curl -sSL https://github.com/COMBINE-lab/salmon/releases/download/v1.0.0/salmon-1.0.0_linux_x86_64.tar.gz | tar xz \
+    # && mv /salmon-*/bin/* /usr/bin/ \
+    # && mv /salmon-*/lib/* /usr/lib/
+
+    # @TODO:
+    # bwa
+    # fastqc
+    # multiqc
+    # bcftools
+    # varscan
+    # strelka
+    # mutect2
+    # hmftools/{amber,cobalt,purple}
+    # control-freec?
+    # manta?
+    # pairtree
+
+%test
+    # #!/bin/bash
+    # command -v
+    # echo '[TEST]: CHECKING DEPENDENCIES'
+    # echo '[TEST]: bwa' && bwa
+
+%runscript
+    #!/bin/bash
+
+    #dnf -y update
+    #dnf upgrade
+    dnf install -y cowsay # curl epel-release git-core vim-minimal
+    date | cowsay
+
+    #echo "Container creation time: $(date -Is | tr -d : | cut -c 1-17)"
+
+%help
+    Aha, I will help you!

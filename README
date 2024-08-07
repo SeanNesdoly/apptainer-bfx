@@ -1,0 +1,25 @@
+README: apptainer-bfx
+
+Apptainer definition files for building containers (operating systems) to run
+reproducible, portable bioinformatics software across compute environments.
+
+Sean Nesdoly
+morrissylab.ucalgary.ca
+Charbonneau Cancer Institute
+Cumming School of Medicine
+University of Calgary
+Created: 2024-07-29
+--------------------------------------------------------------------------------
+
+Apptainer is the Linux Foundation's version of Singularity. It has several
+advantages over Docker, specifically when used on shared HPC systems:
+  - Can be used without the need for root privileges
+  - Does not require a separate daemon process
+
+NEXTFLOW REQUIREMENTS
+  Bash >= 3.x (container entrypoint @ '/bin/bash')
+  ps
+
+RESOURCES
+  apptainer.org/docs/user/main/quick_start.html
+  github.com/apptainer/apptainer/tree/main/examples
