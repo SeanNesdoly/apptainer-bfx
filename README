@@ -22,4 +22,7 @@ NEXTFLOW REQUIREMENTS
 
 RESOURCES
   apptainer.org/docs/user/main/quick_start.html
-  github.com/apptainer/apptainer/tree/main/examples
+    github.com/apptainer/apptainer/tree/main/examples
+  docs.alliancecan.ca/wiki/Apptainer
+  nextflow.io/docs/latest/container.html#apptainer
+    training.nextflow.io/basic_training/containers

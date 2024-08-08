@@ -1,15 +1,17 @@
-# Apptainer image definition file for bioinformatics (bfx) software
+# Apptainer image definition for reproducible bioinformatics software dependencies
 #
-# To build container `bfx.sif` based on definition file `bfx.def`:
-#   $ apptainer build bfx.sif bfx.def
-#   $ apptainer inspect bfx.sif
+# To build container `c.sif` based on definition file `c.def`:
+#   $ apptainer build c.sif c.def
+#   $ apptainer inspect c.sif
 #
-# To execute or run commands within the container:
+# To execute or run commands within the container
+# (docs.alliancecan.ca/wiki/Apptainer#Running_programs_within_a_container):
 #   $ apptainer exec bfx.sif <bash commands>
 #   $ apptainer run bfx.sif
-# 
-# @TODO:
-#   Sign built *.sif image
+#
+# @TODO: Interactively use an image with bind paths (-B) via `apptainer shell`
+#
+# @TODO: Sign & verify built *.sif image
 #
 # Sean Nesdoly
 # morrissylab.ucalgary.ca
