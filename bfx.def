@@ -18,11 +18,8 @@
 # University of Calgary
 # Created: 2024-08-05
 
-# Rocky Linux
-Bootstrap: yum
-OSVersion: 9
-MirrorURL: http://dl.rockylinux.org/pub/rocky/%{OSVERSION}/BaseOS/x86_64/os/
-Include: dnf
+Bootstrap: docker
+From: rockylinux:9.3
 
 %environment
     LC_ALL=C
@@ -33,6 +30,9 @@ Include: dnf
     VERSION 0.0.0
 
 %post -c /bin/bash
+    dnf -y upgrade
+    dnf install -y cowsay epel-release # curl git-core vim-minimal
+
     # apt-get update && apt-get install -y locales-all curl cowsay
     # curl -sSL https://github.com/COMBINE-lab/salmon/releases/download/v1.0.0/salmon-1.0.0_linux_x86_64.tar.gz | tar xz \
     # && mv /salmon-*/bin/* /usr/bin/ \
@@ -59,13 +59,8 @@ Include: dnf
 
 %runscript
     #!/bin/bash
-
-    dnf -y update
-    #dnf upgrade
-    dnf install -y cowsay epel-release # curl git-core vim-minimal
     date | cowsay
-
-    #echo "Container creation time: $(date -Is | tr -d : | cut -c 1-17)"
+    # echo "Container creation time: $(date -Is | tr -d : | cut -c 1-17)"
 
 %help
-    Aha, I will help you!
+    # Aha, I will help you!
